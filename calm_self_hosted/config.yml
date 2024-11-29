@@ -1,16 +1,13 @@
 recipe: default.v1
 language: en
 pipeline:
-- name: custom.custom_cmd_gen.CustomLLMCommandGenerator
+- name: SingleStepLLMCommandGenerator
   llm:
-    provider: self-hosted
-    model: dakshvar22/cmd_gen_travel_assistant_l3.1_8b_unsloth_params
-    api_base: "http://34.87.9.72:8000/v1"
-    timeout: 7
-    max_tokens: 256
-    temperature: 0
-    cache:
-      no-cache: true
+    provider: rasa
+    model: rasa/cmd_gen_codellama_13b_calm_demo
+    api_base: "https://tutorial-llm.rasa.ai"
+  flow_retrieval:
+    active: false
   prompt_template: prompt_templates/time_aware_prompt.jinja2
 
 policies:
